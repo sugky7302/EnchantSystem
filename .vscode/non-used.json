@@ -1,0 +1,22 @@
+{
+    "args": [
+        "--build",
+        "./",
+        "--target",
+        "all",
+        "--"
+    ],
+    // 放在task的cmake跟build裡
+    "options": {
+        "shell": {
+            // 需要根据安装的vs版本调用vs工具命令提示符
+            "executable": "D:\\Tool\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\Build\\vcvarsall.bat",
+            "args": [
+                "${input:PLATFORM}",
+                "-vcvars_ver=${input:vcvars_ver}",
+                "&&"
+            ]
+        }
+    },
+    "problemMatcher": "$msCompile"
+}
