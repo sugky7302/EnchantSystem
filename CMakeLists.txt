@@ -19,11 +19,11 @@ file(GLOB SRC_FILE src/*.cpp)
 # set the include folderh
 include_directories(
     ${PROJECT_SOURCE_DIR}/include
-    # ${CMAKE_SOURCE_DIR}/lib/sqlite3
+    ${PROJECT_SOURCE_DIR}/lib/rbt  # 因為rbt只有header，所以只能在這裡添加
 )
 
-## 新增子資料夾
-# add_subdirectory(src)
+# 添加子資料夾的索引給CMake
+add_subdirectory(lib)
 
 # 定义生成的可执行文件(程序)的名称，
 # 相当于visual studio项目属性中的目标文件名，
@@ -34,4 +34,6 @@ include_directories(
 add_executable(${PROJECT_NAME} ${SRC_FILE})
 
 # 將執行檔(executable)和外部庫(library)連結，使執行檔能夠使用外部庫
-# target_link_libraries(${PROJECT_NAME} sqlite3)
+# BUG: 不成功
+add_dependencies(${PROJECT_NAME} SQLite)
+target_link_libraries(${PROJECT_NAME} ${SQLite})

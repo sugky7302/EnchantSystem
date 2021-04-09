@@ -1,8 +1,9 @@
 # CHANGELOG
 
-## 0.1.1.0 - 2021-04-09
+## 0.1.1.2 - 2021-04-09
 
 ### added:
+- [CMakeLists.txt] Add the include path of red black tree, we can use in the cpp now.
 - [equipment.cpp] Complement all class.
 - [main.cpp] Test whether all class take some mistakes.
 

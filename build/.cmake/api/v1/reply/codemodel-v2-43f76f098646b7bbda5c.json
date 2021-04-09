@@ -6,6 +6,10 @@
 			[
 				{
 					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.20"
@@ -16,6 +20,30 @@
 					[
 						0
 					]
+				},
+				{
+					"build" : "lib",
+					"childIndexes" : 
+					[
+						2
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "lib"
+				},
+				{
+					"build" : "lib/sqlite3",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "lib/sqlite3"
 				}
 			],
 			"name" : "Debug",
@@ -24,7 +52,9 @@
 				{
 					"directoryIndexes" : 
 					[
-						0
+						0,
+						1,
+						2
 					],
 					"name" : "EnchantSystem",
 					"targetIndexes" : 
@@ -38,7 +68,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "EnchantSystem::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-EnchantSystem-Debug-47ba474ab38aab508cfb.json",
+					"jsonFile" : "target-EnchantSystem-Debug-621c7a98598fbb205162.json",
 					"name" : "EnchantSystem",
 					"projectIndex" : 0
 				}

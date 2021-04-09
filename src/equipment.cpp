@@ -7,16 +7,16 @@ Attribute::Attribute(int id, double value) : id(id), value(value) {
 }
 #pragma endregion
 
-#pragma region AttributeList
-AttributeList::AttributeList(int object, int size) : _object(object), _attrs(size) {}
+#pragma region AttributeTree
+AttributeTree::AttributeTree(void) {}
 
-AttributeList& AttributeList::add(int id, double value) { return *this; }
+AttributeTree& AttributeTree::add(Attribute attr) { return *this; }
 
-AttributeList& AttributeList::set(int id, double value) { return *this; }
+AttributeTree& AttributeTree::set(Attribute attr) { return *this; }
 
-Attribute AttributeList::get(int id) { return _attrs[id]; }
+Attribute AttributeTree::get(int id) {}
 
-AttributeList& AttributeList::remove(int index) { return *this; }
+AttributeTree& AttributeTree::remove(int id) { return *this; }
 #pragma endregion
 
 #pragma region Rune
@@ -28,9 +28,13 @@ Attribute Rune::getAttribute() { return _attr; }
 #pragma endregion
 
 #pragma region Equipment
-Equipment::Equipment(int object) : _user(object), _attr(object), _runes(0) {}
+Equipment::Equipment(int object) : _user(object), _attr(), _runes(0) {}
 
-Equipment& Equipment::mountRune(Rune rune) { return *this; }
+Equipment& Equipment::mountRune(Rune rune) {
+    // _rune.push_back(rune);
+    // _attr.add(rune.getAttribute());
+    return *this;
+}
 
 Equipment& Equipment::demountRune(int index) { return *this; }
 

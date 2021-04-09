@@ -2,6 +2,8 @@
 #define EQUIPMENT_H
 
 // #include "sqlite3/sqlite3.h"
+#include "rb_tree.h"
+#include "sqlite3"
 #include <string>
 #include <vector>
 
@@ -18,16 +20,15 @@ class Attribute {
 };
 
 // TODO: Find how to connect sqlite by C++
-class AttributeList {
-    int                    _object;
-    std::vector<Attribute> _attrs;  // TODO: 之後會用RedBlack Tree
+class AttributeTree {
+    rb_tree<Attribute> _attrs;  // TODO: 之後會用RedBlack Tree
 
   public:
-    AttributeList(int object, int size = 0);
-    AttributeList& add(int, double);
-    AttributeList& set(int, double);
+    AttributeTree(void);
+    AttributeTree& add(Attribute);
+    AttributeTree& set(Attribute);
     Attribute      get(int);
-    AttributeList& remove(int);
+    AttributeTree& remove(int);
 };
 
 class Rune {
@@ -41,7 +42,7 @@ class Rune {
 };
 
 class Equipment {
-    AttributeList     _attr;
+    AttributeTree     _attr;
     int               _user;
     std::vector<Rune> _runes;
 

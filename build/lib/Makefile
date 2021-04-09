@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles D:/GoogleDrive/project/C++/EnchantSystem/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(CMAKE_COMMAND) -E cmake_progress_start D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles D:/GoogleDrive/project/C++/EnchantSystem/build/lib//CMakeFiles/progress.marks
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,92 +103,18 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-#=============================================================================
-# Target rules for targets named EnchantSystem
-
-# Build rule for target.
-EnchantSystem: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 EnchantSystem
-.PHONY : EnchantSystem
-
-# fast build rule for target.
-EnchantSystem/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/build
-.PHONY : EnchantSystem/fast
-
-#=============================================================================
-# Target rules for targets named SQLite
-
-# Build rule for target.
-SQLite: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SQLite
-.PHONY : SQLite
-
-# fast build rule for target.
-SQLite/fast:
-	$(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLite.dir/build.make lib/sqlite3/CMakeFiles/SQLite.dir/build
-.PHONY : SQLite/fast
-
-src/equipment.obj: src/equipment.cpp.obj
-.PHONY : src/equipment.obj
-
-# target to build an object file
-src/equipment.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj
-.PHONY : src/equipment.cpp.obj
-
-src/equipment.i: src/equipment.cpp.i
-.PHONY : src/equipment.i
-
-# target to preprocess a source file
-src/equipment.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/src/equipment.cpp.i
-.PHONY : src/equipment.cpp.i
-
-src/equipment.s: src/equipment.cpp.s
-.PHONY : src/equipment.s
-
-# target to generate assembly for a file
-src/equipment.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/src/equipment.cpp.s
-.PHONY : src/equipment.cpp.s
-
-src/main.obj: src/main.cpp.obj
-.PHONY : src/main.obj
-
-# target to build an object file
-src/main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/src/main.cpp.obj
-.PHONY : src/main.cpp.obj
-
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
-
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -198,14 +124,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... EnchantSystem"
-	@echo "... SQLite"
-	@echo "... src/equipment.obj"
-	@echo "... src/equipment.i"
-	@echo "... src/equipment.s"
-	@echo "... src/main.obj"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
 .PHONY : help
 
 
@@ -217,6 +135,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

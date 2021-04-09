@@ -56,6 +56,10 @@
 				{
 					"backtrace" : 2,
 					"path" : "D:/GoogleDrive/project/C++/EnchantSystem/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "D:/GoogleDrive/project/C++/EnchantSystem/lib/rbt"
 				}
 			],
 			"language" : "CXX",
