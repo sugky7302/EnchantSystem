@@ -4,7 +4,7 @@
             "name": "Win",
             "intelliSenseMode": "clang-x64",
             "includePath": [
-                "${workspaceFolder}",
+                "${workspaceFolder}/include",
                 "C:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
                 "C:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
                 "C:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward",
@@ -25,9 +25,9 @@
                     "C:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
                     "C:/LLVM/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
                     "C:/LLVM/include/*",
-                    "${workspaceFolder}"
+                    "${workspaceFolder}/include/*"
                 ],
-                "limitSymbolsToIncludedHeaders": true,
+                "limitSymbolsToIncludedHeaders": false,
                 "databaseFilename": ""
             },
             "compilerPath": "C:\\LLVM\\bin\\gcc.exe",
