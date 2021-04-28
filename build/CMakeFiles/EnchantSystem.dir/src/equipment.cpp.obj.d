@@ -108,5 +108,8 @@ CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj: \
   D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\xlocinfo.h \
   C:\Program\ Files\ (x86)\Windows\ Kits\10\Include\10.0.17763.0\ucrt\ctype.h \
   C:\Program\ Files\ (x86)\Windows\ Kits\10\Include\10.0.17763.0\ucrt\locale.h \
+  D:\GoogleDrive\project\C++\EnchantSystem\lib\sqlite3\sqlite3.h \
+  C:\LLVM\lib\clang\8.0.1\include\stdarg.h \
   D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\string \
-  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\cctype
+  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\cctype \
+  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\iostream

@@ -130,17 +130,17 @@ EnchantSystem/fast:
 .PHONY : EnchantSystem/fast
 
 #=============================================================================
-# Target rules for targets named SQLite
+# Target rules for targets named SQLITE
 
 # Build rule for target.
-SQLite: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SQLite
-.PHONY : SQLite
+SQLITE: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SQLITE
+.PHONY : SQLITE
 
 # fast build rule for target.
-SQLite/fast:
-	$(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLite.dir/build.make lib/sqlite3/CMakeFiles/SQLite.dir/build
-.PHONY : SQLite/fast
+SQLITE/fast:
+	$(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/build
+.PHONY : SQLITE/fast
 
 src/equipment.obj: src/equipment.cpp.obj
 .PHONY : src/equipment.obj
@@ -199,7 +199,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... EnchantSystem"
-	@echo "... SQLite"
+	@echo "... SQLITE"
 	@echo "... src/equipment.obj"
 	@echo "... src/equipment.i"
 	@echo "... src/equipment.s"

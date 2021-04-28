@@ -4,14 +4,12 @@ cmake_minimum_required(VERSION 3.20)
 # set the project name
 project(EnchantSystem)
 
-add_definitions(-std=c++11)
+# 这行要添加，否则gdb调试会出问题
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -std=c++11")
 
 # specify the C++ standard 
 set(CMAKE_CXX_STANDARD 11) 
 set(CMAKE_CXX_STANDARD_REQUIRED True) 
-
-# 这行要添加，否则gdb调试会出问题
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
 # 定义SRC_FILE为当前目录下后缀为cpp的文件列表
 file(GLOB SRC_FILE src/*.cpp)
@@ -20,6 +18,7 @@ file(GLOB SRC_FILE src/*.cpp)
 include_directories(
     ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_SOURCE_DIR}/lib/rbt  # 因為rbt只有header，所以只能在這裡添加
+    ${PROJECT_SOURCE_DIR}/lib/sqlite3  # 除了sqlite3資料夾要include之外，根目錄這裡也要include
 )
 
 # 添加子資料夾的索引給CMake
@@ -34,6 +33,5 @@ add_subdirectory(lib)
 add_executable(${PROJECT_NAME} ${SRC_FILE})
 
 # 將執行檔(executable)和外部庫(library)連結，使執行檔能夠使用外部庫
-# BUG: 不成功
-add_dependencies(${PROJECT_NAME} SQLite)
-target_link_libraries(${PROJECT_NAME} ${SQLite})
+add_dependencies(${PROJECT_NAME} SQLITE)
+target_link_libraries(${PROJECT_NAME} SQLITE)

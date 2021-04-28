@@ -95,7 +95,7 @@ lib/clean: lib/sqlite3/clean
 # Directory level rules for directory lib/sqlite3
 
 # Recursive "all" directory target.
-lib/sqlite3/all: lib/sqlite3/CMakeFiles/SQLite.dir/all
+lib/sqlite3/all: lib/sqlite3/CMakeFiles/SQLITE.dir/all
 .PHONY : lib/sqlite3/all
 
 # Recursive "preinstall" directory target.
@@ -103,14 +103,14 @@ lib/sqlite3/preinstall:
 .PHONY : lib/sqlite3/preinstall
 
 # Recursive "clean" directory target.
-lib/sqlite3/clean: lib/sqlite3/CMakeFiles/SQLite.dir/clean
+lib/sqlite3/clean: lib/sqlite3/CMakeFiles/SQLITE.dir/clean
 .PHONY : lib/sqlite3/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/EnchantSystem.dir
 
 # All Build rule for target.
-CMakeFiles/EnchantSystem.dir/all: lib/sqlite3/CMakeFiles/SQLite.dir/all
+CMakeFiles/EnchantSystem.dir/all: lib/sqlite3/CMakeFiles/SQLITE.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num=1,2,3 "Built target EnchantSystem"
@@ -118,7 +118,7 @@ CMakeFiles/EnchantSystem.dir/all: lib/sqlite3/CMakeFiles/SQLite.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/EnchantSystem.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/EnchantSystem.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles 0
 .PHONY : CMakeFiles/EnchantSystem.dir/rule
@@ -133,30 +133,30 @@ CMakeFiles/EnchantSystem.dir/clean:
 .PHONY : CMakeFiles/EnchantSystem.dir/clean
 
 #=============================================================================
-# Target rules for target lib/sqlite3/CMakeFiles/SQLite.dir
+# Target rules for target lib/sqlite3/CMakeFiles/SQLITE.dir
 
 # All Build rule for target.
-lib/sqlite3/CMakeFiles/SQLite.dir/all:
-	$(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLite.dir/build.make lib/sqlite3/CMakeFiles/SQLite.dir/depend
-	$(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLite.dir/build.make lib/sqlite3/CMakeFiles/SQLite.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num= "Built target SQLite"
-.PHONY : lib/sqlite3/CMakeFiles/SQLite.dir/all
+lib/sqlite3/CMakeFiles/SQLITE.dir/all:
+	$(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/depend
+	$(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num=4,5,6 "Built target SQLITE"
+.PHONY : lib/sqlite3/CMakeFiles/SQLITE.dir/all
 
 # Build rule for subdir invocation for target.
-lib/sqlite3/CMakeFiles/SQLite.dir/rule: cmake_check_build_system
+lib/sqlite3/CMakeFiles/SQLITE.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/sqlite3/CMakeFiles/SQLITE.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles 0
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/sqlite3/CMakeFiles/SQLite.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles 0
-.PHONY : lib/sqlite3/CMakeFiles/SQLite.dir/rule
+.PHONY : lib/sqlite3/CMakeFiles/SQLITE.dir/rule
 
 # Convenience name for target.
-SQLite: lib/sqlite3/CMakeFiles/SQLite.dir/rule
-.PHONY : SQLite
+SQLITE: lib/sqlite3/CMakeFiles/SQLITE.dir/rule
+.PHONY : SQLITE
 
 # clean rule for target.
-lib/sqlite3/CMakeFiles/SQLite.dir/clean:
-	$(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLite.dir/build.make lib/sqlite3/CMakeFiles/SQLite.dir/clean
-.PHONY : lib/sqlite3/CMakeFiles/SQLite.dir/clean
+lib/sqlite3/CMakeFiles/SQLITE.dir/clean:
+	$(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/clean
+.PHONY : lib/sqlite3/CMakeFiles/SQLITE.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

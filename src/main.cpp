@@ -1,5 +1,4 @@
 #include "equipment.h"
-#include <iostream>
 
 using namespace std;
 

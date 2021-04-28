@@ -1,0 +1,2 @@
+C:/LLVM/bin/ar.exe qc SQLITE.lib CMakeFiles/SQLITE.dir/sqlite3.c.obj CMakeFiles/SQLITE.dir/shell.c.obj
+C:/LLVM/bin/ranlib.exe SQLITE.lib

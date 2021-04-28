@@ -50,5 +50,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/EnchantSystem.dir/DependInfo.cmake"
-  "lib/sqlite3/CMakeFiles/SQLite.dir/DependInfo.cmake"
+  "lib/sqlite3/CMakeFiles/SQLITE.dir/DependInfo.cmake"
   )

@@ -4,5 +4,5 @@ D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles/rebuild_cache.dir
 D:/GoogleDrive/project/C++/EnchantSystem/build/lib/CMakeFiles/edit_cache.dir
 D:/GoogleDrive/project/C++/EnchantSystem/build/lib/CMakeFiles/rebuild_cache.dir
 D:/GoogleDrive/project/C++/EnchantSystem/build/lib/sqlite3/CMakeFiles/rebuild_cache.dir
-D:/GoogleDrive/project/C++/EnchantSystem/build/lib/sqlite3/CMakeFiles/SQLite.dir
+D:/GoogleDrive/project/C++/EnchantSystem/build/lib/sqlite3/CMakeFiles/SQLITE.dir
 D:/GoogleDrive/project/C++/EnchantSystem/build/lib/sqlite3/CMakeFiles/edit_cache.dir

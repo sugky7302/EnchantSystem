@@ -1,27 +1,34 @@
 #ifndef EQUIPMENT_H
 #define EQUIPMENT_H
 
-// #include "sqlite3/sqlite3.h"
 #include "rb_tree.h"
-#include "sqlite3"
+#include "sqlite3.h"
 #include <string>
 #include <vector>
+#include <iostream>
 
 namespace Enchant {
 
 class Attribute {
     std::string _text = "";
+    std::string _name = "";
+
+    static int callback(void *data, int argc, char **argv, char **column_name);
+
+    void substitute();
 
   public:
     int    id;
-    double value;
+    float value;
 
-    Attribute(int id = 0, double value = 0);
+    Attribute(int id = 0, float value = 0);
+    std::string getName();
+    std::string getText();
 };
 
 // TODO: Find how to connect sqlite by C++
 class AttributeTree {
-    rb_tree<Attribute> _attrs;  // TODO: ä¹‹å¾Œæœƒç”¨RedBlack Tree
+    rb_tree<Attribute> _attrs;  // TODO: ¤§«á·|¥ÎRedBlack Tree
 
   public:
     AttributeTree(void);

@@ -117,18 +117,66 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-lib/sqlite3/CMakeFiles/SQLite.dir/rule:
-	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/sqlite3/CMakeFiles/SQLite.dir/rule
-.PHONY : lib/sqlite3/CMakeFiles/SQLite.dir/rule
+lib/sqlite3/CMakeFiles/SQLITE.dir/rule:
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/sqlite3/CMakeFiles/SQLITE.dir/rule
+.PHONY : lib/sqlite3/CMakeFiles/SQLITE.dir/rule
 
 # Convenience name for target.
-SQLite: lib/sqlite3/CMakeFiles/SQLite.dir/rule
-.PHONY : SQLite
+SQLITE: lib/sqlite3/CMakeFiles/SQLITE.dir/rule
+.PHONY : SQLITE
 
 # fast build rule for target.
-SQLite/fast:
-	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLite.dir/build.make lib/sqlite3/CMakeFiles/SQLite.dir/build
-.PHONY : SQLite/fast
+SQLITE/fast:
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/build
+.PHONY : SQLITE/fast
+
+shell.obj: shell.c.obj
+.PHONY : shell.obj
+
+# target to build an object file
+shell.c.obj:
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/shell.c.obj
+.PHONY : shell.c.obj
+
+shell.i: shell.c.i
+.PHONY : shell.i
+
+# target to preprocess a source file
+shell.c.i:
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/shell.c.i
+.PHONY : shell.c.i
+
+shell.s: shell.c.s
+.PHONY : shell.s
+
+# target to generate assembly for a file
+shell.c.s:
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/shell.c.s
+.PHONY : shell.c.s
+
+sqlite3.obj: sqlite3.c.obj
+.PHONY : sqlite3.obj
+
+# target to build an object file
+sqlite3.c.obj:
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/sqlite3.c.obj
+.PHONY : sqlite3.c.obj
+
+sqlite3.i: sqlite3.c.i
+.PHONY : sqlite3.i
+
+# target to preprocess a source file
+sqlite3.c.i:
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/sqlite3.c.i
+.PHONY : sqlite3.c.i
+
+sqlite3.s: sqlite3.c.s
+.PHONY : sqlite3.s
+
+# target to generate assembly for a file
+sqlite3.c.s:
+	cd D:/GoogleDrive/project/C++/EnchantSystem/build && $(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/sqlite3.c.s
+.PHONY : sqlite3.c.s
 
 # Help Target
 help:
@@ -138,7 +186,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... SQLite"
+	@echo "... SQLITE"
+	@echo "... shell.obj"
+	@echo "... shell.i"
+	@echo "... shell.s"
+	@echo "... sqlite3.obj"
+	@echo "... sqlite3.i"
+	@echo "... sqlite3.s"
 .PHONY : help
 
 
