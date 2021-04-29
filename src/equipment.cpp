@@ -4,19 +4,13 @@ namespace Enchant {
 #pragma region Attribute
 int            Attribute::callback(void* data, int argc, char** argv, char** column_name) {
     Attribute* self = (Attribute*)data;  // Force to change type
-    self->_name     = argv[0];
-    self->_text     = argv[1];
-
-    // HACK: will remove
-    for (int i = 0; i < argc; i++) {
-        printf("%s = %s\n", column_name[i], argv[i] ? argv[i] : "NULL");
-    }
-    printf("\n");
+    self->_id       = std::atoi(argv[0]);
+    self->_text     = argv[2];
 
     return 0;
 }
 
-Attribute::Attribute(int id, float value) : _id(id) {
+Attribute::Attribute(std::string name, float value) : _name(name) {
     sqlite3* db;
     char*    err_msg = 0;
     int      rc      = sqlite3_open(Attribute::db_name.c_str(), &db);
@@ -28,9 +22,9 @@ Attribute::Attribute(int id, float value) : _id(id) {
         return;
     }
 
-    // Create SQL statement to load data
-    std::string sql =
-        "SELECT name, description FROM attribute WHERE number = " + std::to_string(id);
+    // Create SQL statement to load data.
+    // NOTE: if your keyword type is text, you need to add affix ' '.
+    std::string sql = "SELECT * FROM attribute WHERE name = '" + name + "'";
 
     // Load data from database by executing SQL statement
     rc = sqlite3_exec(db, sql.c_str(), callback, (void*)this, &err_msg);
@@ -44,9 +38,6 @@ Attribute::Attribute(int id, float value) : _id(id) {
     // NOTE: set value and format. It must be put behind loading data,
     // otherwise, the data from database will cover the formatted text.
     setValue(value);
-
-    // HACK: test
-    std::cout << "¤¤¤å´ú¸Õ->" << this->getText() << std::endl;
 }
 
 // We must output correct value + text dynamicly, so copying _text and formatting it.
@@ -61,7 +52,7 @@ float Attribute::getValue() const { return _value; }
 Attribute& Attribute::setValue(const float value) {
     _value = value;
 
-    // replace X or old value with new value by regex
+    // Replace X or old value with new value by regex
     std::regex reg("\\d+.\\d+|X");
     _text = std::regex_replace(_text, reg, std::to_string(value));
     return *this;
@@ -75,12 +66,29 @@ std::ostream& operator<<(std::ostream& out, const Attribute& attr) {
 #pragma region AttributeTree
 AttributeTree::AttributeTree(void) {}
 
-AttributeTree& AttributeTree::add(Attribute& attr) {
+int AttributeTree::size() { return _attrs.size(); }
+
+AttributeTree& AttributeTree::add(Attribute& attr, bool is_plus) {
     std::list<Attribute>::iterator iter = find(attr.getName());
-    if (iter != _attrs.end())
+    if (iter == _attrs.end()) {
+        _attrs.push_back(attr);
+        return *this;
+    }
+
+    if (is_plus)
         iter->setValue(iter->getValue() + attr.getValue());
     else
-        _attrs.push_back(attr);
+        iter->setValue(iter->getValue() - attr.getValue());
+
+    return *this;
+}
+
+AttributeTree& AttributeTree::add(std::string& name, float& value) {
+    std::list<Attribute>::iterator iter = find(name);
+    if (iter != _attrs.end())
+        iter->setValue(iter->getValue() + value);
+    else
+        _attrs.push_back(*(new Attribute(name, value)));
 
     return *this;
 }
@@ -95,7 +103,17 @@ AttributeTree& AttributeTree::set(Attribute& attr) {
     return *this;
 }
 
-Attribute AttributeTree::get(std::string& name) {
+AttributeTree& AttributeTree::set(std::string& name, float& value) {
+    std::list<Attribute>::iterator iter = find(name);
+    if (iter != _attrs.end())
+        iter->setValue(value);
+    else
+        _attrs.push_back(*(new Attribute(name, value)));
+
+    return *this;
+}
+
+float AttributeTree::get(std::string& name) {
     std::list<Attribute>::iterator iter = find(name);
     return (iter != _attrs.end()) ? iter->getValue() : 0;
 }
@@ -118,8 +136,7 @@ AttributeTree& AttributeTree::remove(std::string& name) {
 // NOTE: Since attr_tree._attrs is changed its order by using function sort,
 // we can not add prefix "const" in front of attr_tree.
 std::ostream& operator<<(std::ostream& out, AttributeTree& attr_tree) {
-    attr_tree._attrs.sort(
-        [&](const Attribute a, const Attribute b) -> bool { return a.getId() < b.getId(); });
+    attr_tree.sort();
 
     for (std::list<Attribute>::iterator iter = attr_tree._attrs.begin();
          iter != attr_tree._attrs.end(); ++iter) {
@@ -128,29 +145,74 @@ std::ostream& operator<<(std::ostream& out, AttributeTree& attr_tree) {
 
     return out;
 }
+
+AttributeTree& AttributeTree::sort() {
+    _attrs.sort(
+        [](const Attribute& a, const Attribute& b) -> bool { return a.getId() < b.getId(); });
+
+    return *this;
+}
 #pragma endregion
 
 #pragma region Rune
-Rune::Rune(int object, int id, int level) : _object(object), _attr(id) {}
+// HACK: set level to the value temporarily.
+Rune::Rune(std::string name, int level) : _attr(name, (float)level) {}
 
 Rune::~Rune() {}
 
-Attribute Rune::getAttribute() { return _attr; }
+Attribute& Rune::getAttribute() { return _attr; }
 #pragma endregion
 
 #pragma region Equipment
-Equipment::Equipment(int object) : _user(object), _attr(), _runes(0) {}
+Equipment::Equipment(int object, std::string name)
+    : _user(object), _name(name), _attr(), _runes(0) {}
 
-Equipment& Equipment::mountRune(Rune rune) {
-    _rune.push_back(rune);
+Equipment& Equipment::mountRune(Rune& rune) {
+    _runes.push_back(rune);
     _attr.add(rune.getAttribute());
     return *this;
 }
 
-Equipment& Equipment::demountRune(int index) { return *this; }
+Equipment& Equipment::demountRune(int index) {
+    int n = 0;
+    for (std::list<Rune>::iterator iter = _runes.begin(); iter != _runes.end(); ++iter) {
+        if (n == index) {
+            _runes.erase(iter);
+            _attr.add(iter->getAttribute(), false);
+            break;
+        }
+        n++;
+    }
+    return *this;
+}
 
 Equipment& Equipment::equip() { return *this; }
 
 Equipment& Equipment::drop() { return *this; }
+
+// NOTE: Since AttributeTree's ostream is not const, we can not use const here.
+std::ostream& operator<<(std::ostream& out, Equipment& item) {
+    item.sort();
+
+    out << item._prefix << item._name << "(Lv." << item._level << ")\n"
+        << "--------\n";
+
+    for (std::list<Rune>::iterator iter = item._runes.begin(); iter != item._runes.end(); ++iter) {
+        out << "¡»" << iter->getAttribute().getText() << "\n";
+    }
+
+    out << "--------\n";
+
+    return out;
+}
+
+Equipment& Equipment::sort() {
+    _attr.sort();
+    _runes.sort([](Rune& a, Rune& b) -> bool {
+        return a.getAttribute().getId() < b.getAttribute().getId();
+    });
+
+    return *this;
+}
 #pragma endregion
 }  // namespace Enchant

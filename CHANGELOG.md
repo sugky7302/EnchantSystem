@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.1.1.5 - 2021-04-29
+## 0.1.1.6 - 2021-04-29
 
 ### Todo:
 - [x] How to load data from the database.
@@ -12,6 +12,7 @@
 - [ ] Rewrite red-black tree
 
 ### added:
+- Add a database "attribute.sqlite3".
 - [CMakeLists.txt]
   - Add the include path of red black tree, we can use in the cpp now.
   - Add the includ path of sqlite3.

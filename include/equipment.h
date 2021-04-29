@@ -21,13 +21,13 @@ class Attribute {
     static int callback(void*, int, char**, char**);
 
   public:
-    Attribute(int id = 0, float value = 0);
-    int getId() const;  // 加了const的成?函?可以被非const?象和const?象?用
+    Attribute(std::string name = "", float value = 0);
+    int         getId() const;  // 加了const的成?函?可以被非const?象和const?象?用
     std::string getName() const;
     std::string getText() const;
     float       getValue() const;
     Attribute&  setValue(const float);
-    friend std::ostream& operator<<(std::ostream& out, const Attribute& attr);
+    friend std::ostream& operator<<(std::ostream&, const Attribute&);
 };
 
 class AttributeTree {
@@ -36,10 +36,14 @@ class AttributeTree {
 
   public:
     AttributeTree(void);
-    AttributeTree&       add(Attribute&);
+    int                  size();
+    AttributeTree&       add(Attribute&, bool is_plus = true);
+    AttributeTree&       add(std::string&, float&);
     AttributeTree&       set(Attribute&);
-    Attribute            get(std::string&);
+    AttributeTree&       set(std::string&, float&);
+    float                get(std::string&);
     AttributeTree&       remove(std::string&);
+    AttributeTree&       sort();
     friend std::ostream& operator<<(std::ostream&, AttributeTree&);
 };
 
@@ -48,22 +52,27 @@ class Rune {
     Attribute _attr;
 
   public:
-    Rune(int object = 0, int id = 0, int level = 0);
+    Rune(std::string name = "", int level = 0);
     ~Rune();
-    Attribute getAttribute();
+    Attribute& getAttribute();
 };
 
 class Equipment {
-    AttributeTree     _attr;
-    int               _user;
-    std::vector<Rune> _runes;
+    AttributeTree   _attr;
+    int             _user;
+    std::list<Rune> _runes;
+    int             _level  = 0;
+    std::string     _prefix = "";
+    std::string     _name   = "";
 
   public:
-    Equipment(int);
-    Equipment& mountRune(Rune);
-    Equipment& demountRune(int);
-    Equipment& equip();
-    Equipment& drop();
+    Equipment(int, std::string);
+    Equipment&           mountRune(Rune&);
+    Equipment&           demountRune(int);
+    Equipment&           equip();
+    Equipment&           drop();
+    Equipment&           sort();
+    friend std::ostream& operator<<(std::ostream&, Equipment&);
 };
 }  // namespace Enchant
 
