@@ -1,7 +1,6 @@
 # CHANGELOG
 
-
-## 0.1.1.3 - 2021-04-09
+## 0.1.1.4 - 2021-04-09
 
 ### Todo:
 - [x] How to load data from the database.
@@ -16,6 +15,8 @@
   - Complement all class.
   - Attribute adds two methods.
   - Attribute can load data from attribute.sqlite3.
+  - Let database name be modified from class Attribute, not in the constructor.
+  - When we set value, attribute's text is changed synchronously.
 - [equipment.h] Attribute adds two methods. getName can get the attribute name and getText can get the attribute description.
 - [main.cpp] 
   - Test whether all class take some mistakes.

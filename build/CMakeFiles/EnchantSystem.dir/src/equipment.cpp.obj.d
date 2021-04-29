@@ -110,6 +110,14 @@ CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj: \
   C:\Program\ Files\ (x86)\Windows\ Kits\10\Include\10.0.17763.0\ucrt\locale.h \
   D:\GoogleDrive\project\C++\EnchantSystem\lib\sqlite3\sqlite3.h \
   C:\LLVM\lib\clang\8.0.1\include\stdarg.h \
-  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\string \
+  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\iostream \
+  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\regex \
   D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\cctype \
-  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\iostream
+  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\locale \
+  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\xlocbuf \
+  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\xlocmes \
+  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\xlocmon \
+  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\xloctime \
+  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\ctime \
+  C:\Program\ Files\ (x86)\Windows\ Kits\10\Include\10.0.17763.0\ucrt\time.h \
+  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\string

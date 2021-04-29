@@ -3,27 +3,29 @@
 
 #include "rb_tree.h"
 #include "sqlite3.h"
+#include <iostream>
+#include <regex>
 #include <string>
 #include <vector>
-#include <iostream>
 
 namespace Enchant {
 
 class Attribute {
+    static inline std::string db_name =
+        "attribute.sqlite3";  // only using "static" makes a mistake.
     std::string _text = "";
     std::string _name = "";
+    int         _id;
+    float       _value;
 
-    static int callback(void *data, int argc, char **argv, char **column_name);
-
-    void substitute();
+    static int callback(void* data, int argc, char** argv, char** column_name);
 
   public:
-    int    id;
-    float value;
-
     Attribute(int id = 0, float value = 0);
     std::string getName();
     std::string getText();
+    float       getValue();
+    Attribute&  setValue(const float value);
 };
 
 // TODO: Find how to connect sqlite by C++
