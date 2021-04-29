@@ -1,9 +1,9 @@
 #ifndef EQUIPMENT_H
 #define EQUIPMENT_H
 
-#include "rb_tree.h"
 #include "sqlite3.h"
 #include <iostream>
+#include <list>
 #include <regex>
 #include <string>
 #include <vector>
@@ -18,26 +18,29 @@ class Attribute {
     int         _id;
     float       _value;
 
-    static int callback(void* data, int argc, char** argv, char** column_name);
+    static int callback(void*, int, char**, char**);
 
   public:
     Attribute(int id = 0, float value = 0);
-    std::string getName();
-    std::string getText();
-    float       getValue();
-    Attribute&  setValue(const float value);
+    int getId() const;  // 加了const的成?函?可以被非const?象和const?象?用
+    std::string getName() const;
+    std::string getText() const;
+    float       getValue() const;
+    Attribute&  setValue(const float);
+    friend std::ostream& operator<<(std::ostream& out, const Attribute& attr);
 };
 
-// TODO: Find how to connect sqlite by C++
 class AttributeTree {
-    rb_tree<Attribute> _attrs;  // TODO: 之後會用RedBlack Tree
+    std::list<Attribute>           _attrs;             // TODO: 之後會用RedBlack Tree
+    std::list<Attribute>::iterator find(std::string);  // Can not use "const"
 
   public:
     AttributeTree(void);
-    AttributeTree& add(Attribute);
-    AttributeTree& set(Attribute);
-    Attribute      get(int);
-    AttributeTree& remove(int);
+    AttributeTree&       add(Attribute&);
+    AttributeTree&       set(Attribute&);
+    Attribute            get(std::string&);
+    AttributeTree&       remove(std::string&);
+    friend std::ostream& operator<<(std::ostream&, AttributeTree&);
 };
 
 class Rune {

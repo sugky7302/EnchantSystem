@@ -1,11 +1,15 @@
 # CHANGELOG
 
-## 0.1.1.4 - 2021-04-29
+## 0.1.1.5 - 2021-04-29
 
 ### Todo:
 - [x] How to load data from the database.
-- [x] the output of database needs to change coding.
-- [ ] rewrite red-black tree
+- [x] The output of database needs to change coding.
+- [x] Finish Attribute.
+- [x] Finish AttributeTree.
+- [x] Finish Rune.
+- [ ] Finish Equipment.
+- [ ] Rewrite red-black tree
 
 ### added:
 - [CMakeLists.txt]
@@ -13,12 +17,14 @@
   - Add the includ path of sqlite3.
 - [equipment.cpp]
   - Complement all class.
-  - Attribute adds 5 methods.
+  - Attribute adds 6 methods.
   - Attribute can load data from attribute.sqlite3.
   - Let database name be modified from class Attribute, not in the constructor.
   - When we set value, attribute's text is changed synchronously.
+  - Finish AttributeTree imcomplement.
 - [equipment.h] 
-    - Attribute adds 5 methods.
+    - Attribute adds 6 methods.
+        - getId can get the attribute number.
         - getName can get the attribute name.
         - getText can get the attribute description.
         - getValue can get the attribute value.
