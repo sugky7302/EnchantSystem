@@ -156,11 +156,18 @@ AttributeTree& AttributeTree::sort() {
 
 #pragma region Rune
 // HACK: set level to the value temporarily.
-Rune::Rune(std::string name, int level) : _attr(name, (float)level) {}
+Rune::Rune(std::string name, int level, int quality)
+    : _level(level), _quality(quality), _attr(name, (float)level) {}
 
 Rune::~Rune() {}
 
 Attribute& Rune::getAttribute() { return _attr; }
+
+int Rune::getLevel() const { return _level; }
+
+int Rune::getQuality() const { return _quality; }
+
+std::string Rune::getAffix() const { return _affix; }
 #pragma endregion
 
 #pragma region Equipment
@@ -205,8 +212,9 @@ Equipment& Equipment::drop() { return *this; }
 // NOTE: Since AttributeTree's ostream is not const, we can not use const here.
 std::ostream& operator<<(std::ostream& out, Equipment& item) {
     item.sort();
+    item.assignPrefix();
 
-    out << item._prefix << item._name << "(Lv." << item._level << ")\n"
+    out << item._prefix << " " << item._name << "(Lv." << item._level << ")\n"
         << "--------\n";
 
     for (std::list<Rune>::iterator iter = item._runes.begin(); iter != item._runes.end(); ++iter) {
@@ -223,6 +231,33 @@ Equipment& Equipment::sort() {
     _runes.sort([](Rune& a, Rune& b) -> bool {
         return a.getAttribute().getId() < b.getAttribute().getId();
     });
+
+    return *this;
+}
+
+bool IsHigherOrder(Rune& a, Rune& b) {
+    bool is_level_higher   = a.getLevel() > b.getLevel();
+    bool is_level_equal    = a.getLevel() == b.getLevel();
+    bool is_quality_higher = a.getQuality() > b.getQuality();
+    bool is_quality_equal  = a.getQuality() == b.getQuality();
+    bool is_id_smaller     = a.getAttribute().getId() < a.getAttribute().getId();
+
+    return is_level_higher || (is_level_equal && is_quality_higher) ||
+           (is_level_equal && is_quality_equal && is_id_smaller);
+}
+
+Equipment& Equipment::assignPrefix() {
+    Rune max(""), sub_max("");
+
+    for (std::list<Rune>::iterator iter = _runes.begin(); iter != _runes.end(); ++iter) {
+        if (IsHigherOrder(*iter, max))
+            max = *iter;
+        else if (IsHigherOrder(*iter, sub_max))
+            sub_max = *iter;
+    }
+
+    _prefix =
+        (sub_max.getLevel() == 0) ? max.getAffix() : max.getAffix() + " and " + sub_max.getAffix();
 
     return *this;
 }

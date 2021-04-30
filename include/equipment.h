@@ -49,13 +49,19 @@ class AttributeTree {
 };
 
 class Rune {
-    int       _object;
-    Attribute _attr;
+    int         _object;
+    int         _level;
+    int         _quality;
+    std::string _affix;
+    Attribute   _attr;
 
   public:
-    Rune(std::string name = "", int level = 0);
+    Rune(std::string name = "", int level = 0, int quality = 0);
     ~Rune();
-    Attribute& getAttribute();
+    Attribute&  getAttribute();
+    int         getLevel() const;
+    int         getQuality() const;
+    std::string getAffix() const;
 };
 
 class Equipment {
@@ -78,7 +84,9 @@ class Equipment {
     Equipment&           drop();
     Equipment&           use();
     Equipment&           sort();
+    Equipment&           assignPrefix();
     friend std::ostream& operator<<(std::ostream&, Equipment&);
+    friend bool          IsHigherOrder(Rune&, Rune&);
 };
 }  // namespace Enchant
 
