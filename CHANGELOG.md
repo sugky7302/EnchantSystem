@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.1.1.6 - 2021-04-29
+## 0.1.1.7 - 2021-04-30
 
 ### Todo:
 - [x] How to load data from the database.

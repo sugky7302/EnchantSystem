@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
     int                hero_id = 10000000;
-    Enchant::Equipment sword(hero_id, "Ди·АЄМ");
+    Enchant::Equipment sword("Ди·АЄМ", 5);
     Enchant::Rune      rune_of_war("attack", 1);
     Enchant::Rune      rune_of_arcane("magic attack", 3);
     Enchant::Rune      fire_core("fire element resistance", 5);

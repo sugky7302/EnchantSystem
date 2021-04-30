@@ -164,12 +164,22 @@ Attribute& Rune::getAttribute() { return _attr; }
 #pragma endregion
 
 #pragma region Equipment
-Equipment::Equipment(int object, std::string name)
-    : _user(object), _name(name), _attr(), _runes(0) {}
+Equipment::Equipment(std::string name, int level)
+    : _level(level), _name(name), _attr(), _runes(0) {}
+
+Equipment& Equipment::setUser(int user) {
+    _user = user;
+    return *this;
+}
 
 Equipment& Equipment::mountRune(Rune& rune) {
-    _runes.push_back(rune);
-    _attr.add(rune.getAttribute());
+    if (_runes.size() < _level / 5 + 1) {
+        _runes.push_back(rune);
+        _attr.add(rune.getAttribute());
+    }
+    else
+        std::cout << _name << " has no hole to mount the rune." << std::endl;
+
     return *this;
 }
 
@@ -187,6 +197,8 @@ Equipment& Equipment::demountRune(int index) {
 }
 
 Equipment& Equipment::equip() { return *this; }
+
+Equipment& Equipment::use() { return *this; }
 
 Equipment& Equipment::drop() { return *this; }
 

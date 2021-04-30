@@ -2,6 +2,7 @@
 #define EQUIPMENT_H
 
 #include "sqlite3.h"
+#include <functional>
 #include <iostream>
 #include <list>
 #include <regex>
@@ -58,19 +59,24 @@ class Rune {
 };
 
 class Equipment {
-    AttributeTree   _attr;
-    int             _user;
-    std::list<Rune> _runes;
-    int             _level  = 0;
-    std::string     _prefix = "";
-    std::string     _name   = "";
+    AttributeTree                                _attr;
+    int                                          _user;
+    std::list<Rune>                              _runes;
+    int                                          _level  = 0;
+    std::string                                  _prefix = "";
+    std::string                                  _name   = "";
+    std::vector<std::function<void(int&)>>       equip_effect;
+    std::vector<std::function<void(int&, int&)>> use_effect;
+    std::vector<std::function<void(int&)>>       drop_effect;
 
   public:
-    Equipment(int, std::string);
+    Equipment(std::string, int);
+    Equipment&           setUser(int);
     Equipment&           mountRune(Rune&);
     Equipment&           demountRune(int);
     Equipment&           equip();
     Equipment&           drop();
+    Equipment&           use();
     Equipment&           sort();
     friend std::ostream& operator<<(std::ostream&, Equipment&);
 };
