@@ -171,8 +171,8 @@ std::string Rune::getAffix() const { return _affix; }
 #pragma endregion
 
 #pragma region Equipment
-Equipment::Equipment(std::string name, int level)
-    : _level(level), _name(name), _attr(), _runes(0) {}
+Equipment::Equipment(std::string name, EquipmentType type, int level)
+    : _level(level), _name(name), _type(type), _attr(), _runes(0) {}
 
 Equipment& Equipment::setUser(int user) {
     _user = user;
@@ -214,7 +214,7 @@ std::ostream& operator<<(std::ostream& out, Equipment& item) {
     item.sort();
     item.assignPrefix();
 
-    out << item._prefix << " " << item._name << "(Lv." << item._level << ")\n"
+    out << item._prefix << item._name << "(Lv." << item._level << ")\n"
         << "--------\n";
 
     for (std::list<Rune>::iterator iter = item._runes.begin(); iter != item._runes.end(); ++iter) {
@@ -247,6 +247,8 @@ bool IsHigherOrder(Rune& a, Rune& b) {
 }
 
 Equipment& Equipment::assignPrefix() {
+    if (_runes.size() == 0) return *this;
+
     Rune max(""), sub_max("");
 
     for (std::list<Rune>::iterator iter = _runes.begin(); iter != _runes.end(); ++iter) {
@@ -256,8 +258,7 @@ Equipment& Equipment::assignPrefix() {
             sub_max = *iter;
     }
 
-    _prefix =
-        (sub_max.getLevel() == 0) ? max.getAffix() : max.getAffix() + " and " + sub_max.getAffix();
+    _prefix = max.getAffix() + (sub_max.getLevel() > 0 ? ("¡D" + sub_max.getAffix()) : "") + "¡D";
 
     return *this;
 }

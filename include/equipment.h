@@ -11,6 +11,29 @@
 
 namespace Enchant {
 
+enum EquipmentType {
+    sword,
+    bow,
+    axe,
+    dagger,
+    knife,
+    mace,
+    spear,
+    fist,
+    staff,
+    wand,
+    helmet,
+    shoulder,
+    chest,
+    bracer,
+    gloves,
+    belt,
+    pants,
+    boots,
+    amulet,
+    ring,
+};
+
 class Attribute {
     static inline std::string db_name =
         "attribute.sqlite3";  // only using "static" makes a mistake.
@@ -65,6 +88,7 @@ class Rune {
 };
 
 class Equipment {
+    EquipmentType                                _type;
     AttributeTree                                _attr;
     int                                          _user;
     std::list<Rune>                              _runes;
@@ -76,7 +100,7 @@ class Equipment {
     std::vector<std::function<void(int&)>>       drop_effect;
 
   public:
-    Equipment(std::string, int);
+    Equipment(std::string, EquipmentType, int);
     Equipment&           setUser(int);
     Equipment&           mountRune(Rune&);
     Equipment&           demountRune(int);

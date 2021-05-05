@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.1.1.8 - 2021-04-30
+## 0.1.1.9 - 2021-05-05
 
 ### Todo:
 - [x] How to load data from the database.
@@ -8,7 +8,7 @@
 - [x] Finish Attribute.
 - [x] Finish AttributeTree.
 - [x] Finish Rune.
-- [ ] Finish Equipment.
+- [x] Finish Equipment.
 - [ ] Rewrite red-black tree
 
 ### added:
@@ -31,6 +31,7 @@
         - getValue can get the attribute value.
         - setValue can set the attribute value and text is changed synchronously.
         - callback is used to the sqlite3_exec callback.
+    - Add Equipment's type.
 - [main.cpp] 
   - Test whether all class take some mistakes.
   - Add sqlite3 header.
