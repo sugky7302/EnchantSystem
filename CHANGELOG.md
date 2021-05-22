@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.1.1.10 - 2021-05-22
+## 0.1.1.11 - 2021-05-22
 
 ### Todo:
 - [x] How to load data from the database.
@@ -36,9 +36,12 @@
     - Add Equipment's type.
 - [include/] Add database.h and drop.h.
 - [lib/] Add json thirdparty.
+- [src/] Add drop.cpp and finish DropItem system.
 - [main.cpp] 
   - Test whether all class take some mistakes.
   - Add sqlite3 header.
+  - Add drop header.
+  - Add database header.
 
 ### Changed:
 - [CMakeLists.txt] We no longer add the included path of thirdparty everytime.

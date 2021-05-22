@@ -123,7 +123,9 @@ CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj: ../src/drop.cpp \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/valarray \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/cassert \
   C:/Program\ Files\ (x86)/Windows\ Kits/10/Include/10.0.17763.0/ucrt/assert.h \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/clocale
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/clocale \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/iostream \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/random
 
 CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj: ../src/equipment.cpp \
   ../include/equipment.h \
@@ -246,7 +248,7 @@ CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj: ../src/equipment.cpp \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/vector
 
 CMakeFiles/EnchantSystem.dir/src/main.cpp.obj: ../src/main.cpp \
-  ../include/equipment.h \
+  ../include/drop.h \
   ../include/database.h \
   ../lib/sqlite3/sqlite3.h \
   C:/LLVM/lib/clang/8.0.1/include/stdarg.h \
@@ -326,11 +328,14 @@ CMakeFiles/EnchantSystem.dir/src/main.cpp.obj: ../src/main.cpp \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/intrin0.h \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/cctype \
   C:/Program\ Files\ (x86)/Windows\ Kits/10/Include/10.0.17763.0/ucrt/ctype.h \
+  ../lib/json/json.hpp \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/algorithm \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xmemory \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/functional \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/tuple \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/typeinfo \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/vcruntime_typeinfo.h \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/iostream \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/iterator \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/istream \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/ostream \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/ios \
@@ -347,36 +352,35 @@ CMakeFiles/EnchantSystem.dir/src/main.cpp.obj: ../src/main.cpp \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xerrc.h \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xlocale \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/memory \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xmemory \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xfacet \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xlocinfo \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xlocinfo.h \
   C:/Program\ Files\ (x86)/Windows\ Kits/10/Include/10.0.17763.0/ucrt/locale.h \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/list \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/regex \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/algorithm \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/iterator \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/locale \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xlocbuf \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xlocmes \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xlocmon \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xloctime \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/ctime \
-  C:/Program\ Files\ (x86)/Windows\ Kits/10/Include/10.0.17763.0/ucrt/time.h \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/vector \
-  ../lib/json/json.hpp \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/numeric \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/vector \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/array \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/forward_list \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/map \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xtree \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/unordered_map \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xhash \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/list \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xbit_ops.h \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/valarray \
   D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/cassert \
   C:/Program\ Files\ (x86)/Windows\ Kits/10/Include/10.0.17763.0/ucrt/assert.h \
-  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/clocale
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/clocale \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/iostream \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/random \
+  ../include/equipment.h \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/regex \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/locale \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xlocbuf \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xlocmes \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xlocmon \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xloctime \
+  D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/ctime \
+  C:/Program\ Files\ (x86)/Windows\ Kits/10/Include/10.0.17763.0/ucrt/time.h
 
 
 D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/xmemory0:
@@ -627,11 +631,13 @@ C:/Program\ Files\ (x86)/Windows\ Kits/10/Include/10.0.17763.0/ucrt/assert.h:
 
 D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/clocale:
 
+D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/iostream:
+
+D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/random:
+
 ../src/equipment.cpp:
 
 ../include/equipment.h:
-
-D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/iostream:
 
 D:/Tool/Microsoft\ Visual\ Studio/2019/Community/VC/Tools/MSVC/14.20.27508/include/regex:
 
