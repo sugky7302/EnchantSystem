@@ -1,6 +1,11 @@
 [
 {
   "directory": "D:/GoogleDrive/project/C++/EnchantSystem/build",
+  "command": "C:/LLVM/bin/clang++.exe  @CMakeFiles/EnchantSystem.dir/includes_CXX.rsp  -g -std=c++11 -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++14 -o CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj -c D:/GoogleDrive/project/C++/EnchantSystem/src/drop.cpp",
+  "file": "D:/GoogleDrive/project/C++/EnchantSystem/src/drop.cpp"
+},
+{
+  "directory": "D:/GoogleDrive/project/C++/EnchantSystem/build",
   "command": "C:/LLVM/bin/clang++.exe  @CMakeFiles/EnchantSystem.dir/includes_CXX.rsp  -g -std=c++11 -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++14 -o CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj -c D:/GoogleDrive/project/C++/EnchantSystem/src/equipment.cpp",
   "file": "D:/GoogleDrive/project/C++/EnchantSystem/src/equipment.cpp"
 },

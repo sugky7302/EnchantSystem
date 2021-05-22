@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj"
+  "CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj.d"
   "CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj"
   "CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj.d"
   "CMakeFiles/EnchantSystem.dir/src/main.cpp.obj"

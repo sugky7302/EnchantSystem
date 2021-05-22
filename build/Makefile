@@ -142,6 +142,30 @@ SQLITE/fast:
 	$(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/build
 .PHONY : SQLITE/fast
 
+src/drop.obj: src/drop.cpp.obj
+.PHONY : src/drop.obj
+
+# target to build an object file
+src/drop.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj
+.PHONY : src/drop.cpp.obj
+
+src/drop.i: src/drop.cpp.i
+.PHONY : src/drop.i
+
+# target to preprocess a source file
+src/drop.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/src/drop.cpp.i
+.PHONY : src/drop.cpp.i
+
+src/drop.s: src/drop.cpp.s
+.PHONY : src/drop.s
+
+# target to generate assembly for a file
+src/drop.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/src/drop.cpp.s
+.PHONY : src/drop.cpp.s
+
 src/equipment.obj: src/equipment.cpp.obj
 .PHONY : src/equipment.obj
 
@@ -200,6 +224,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... EnchantSystem"
 	@echo "... SQLITE"
+	@echo "... src/drop.obj"
+	@echo "... src/drop.i"
+	@echo "... src/drop.s"
 	@echo "... src/equipment.obj"
 	@echo "... src/equipment.i"
 	@echo "... src/equipment.s"

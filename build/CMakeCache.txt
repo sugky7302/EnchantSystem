@@ -235,6 +235,9 @@ EnchantSystem_BINARY_DIR:STATIC=D:/GoogleDrive/project/C++/EnchantSystem/build
 //Value Computed by CMake
 EnchantSystem_SOURCE_DIR:STATIC=D:/GoogleDrive/project/C++/EnchantSystem
 
+//The directory containing a CMake configuration file for nlohmann_json.
+nlohmann_json_DIR:PATH=nlohmann_json_DIR-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries

@@ -1,6 +1,7 @@
 #include "equipment.h"
 
 namespace Enchant {
+
 #pragma region Attribute
 int            Attribute::callback(void* data, int argc, char** argv, char** column_name) {
     Attribute* self = (Attribute*)data;  // Force to change type
@@ -11,29 +12,11 @@ int            Attribute::callback(void* data, int argc, char** argv, char** col
 }
 
 Attribute::Attribute(std::string name, float value) : _name(name) {
-    sqlite3* db;
-    char*    err_msg = 0;
-    int      rc      = sqlite3_open(Attribute::db_name.c_str(), &db);
-
-    // Database don't be opened, then we close it and stop this function.
-    if (rc) {
-        fprintf(stderr, "[SQL error] Can't open database, %s\n", sqlite3_errmsg(db));
-        sqlite3_close(db);
-        return;
-    }
-
     // Create SQL statement to load data.
     // NOTE: if your keyword type is text, you need to add affix ' '.
     std::string sql = "SELECT * FROM attribute WHERE name = '" + name + "'";
 
-    // Load data from database by executing SQL statement
-    rc = sqlite3_exec(db, sql.c_str(), callback, (void*)this, &err_msg);
-    if (rc != SQLITE_OK) {
-        fprintf(stderr, "[SQL error] %s\n", err_msg);
-        sqlite3_free(err_msg);
-    }
-
-    sqlite3_close(db);
+    LoadDatabase(Attribute::db_name, sql, callback, (void*)this);
 
     // NOTE: set value and format. It must be put behind loading data,
     // otherwise, the data from database will cover the formatted text.
@@ -258,9 +241,22 @@ Equipment& Equipment::assignPrefix() {
             sub_max = *iter;
     }
 
-    _prefix = max.getAffix() + (sub_max.getLevel() > 0 ? ("¡D" + sub_max.getAffix()) : "") + "¡D";
+    _prefix = (max.getLevel() > 0 ? max.getAffix() + "¡D" : "") +
+              (sub_max.getLevel() > 0 ? sub_max.getAffix() + "¡D" : "");
 
     return *this;
 }
 #pragma endregion
+
+#pragma Material
+int Material::callback(void* data, int argc, char** argv, char** column_name) { return 0; }
+
+Material::Material(std::string name) {
+    std::string cmd = "";
+    LoadDatabase(Material::db_name, cmd, callback, (void*)this);
+}
+#pragma endregion
+
+// Equipment Produce(std::vector<Material> material_set) { MaterialSet.FindRecipe }
+
 }  // namespace Enchant

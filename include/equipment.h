@@ -1,7 +1,7 @@
 #ifndef EQUIPMENT_H
 #define EQUIPMENT_H
 
-#include "sqlite3.h"
+#include "database.h"
 #include <functional>
 #include <iostream>
 #include <list>
@@ -111,6 +111,27 @@ class Equipment {
     Equipment&           assignPrefix();
     friend std::ostream& operator<<(std::ostream&, Equipment&);
     friend bool          IsHigherOrder(Rune&, Rune&);
+};
+
+class Material {
+    Attribute                 _effect, _side_effect, _link_effect, _side_link_effect;
+    static int                callback(void*, int, char**, char**);
+    static inline std::string db_name = "attribute.sqlite3";
+
+  public:
+    Material(std::string);
+    Attribute getEffect() { return _effect; };
+    Attribute getSideEffect() { return _side_effect; };
+    Attribute getLinkEffect() { return _link_effect; };
+    Attribute getSideLinkEffect() { return _side_link_effect; };
+};
+
+class MaterialSet {
+    std::vector<Material> _set;
+
+  public:
+    MaterialSet(std::vector<Material>);
+    Attribute getEffect();
 };
 }  // namespace Enchant
 

@@ -69,11 +69,26 @@ include CMakeFiles/EnchantSystem.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/EnchantSystem.dir/flags.make
 
+CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj: CMakeFiles/EnchantSystem.dir/flags.make
+CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj: CMakeFiles/EnchantSystem.dir/includes_CXX.rsp
+CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj: ../src/drop.cpp
+CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj: CMakeFiles/EnchantSystem.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj"
+	C:/LLVM/bin/clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj -MF CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj.d -o CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj -c D:/GoogleDrive/project/C++/EnchantSystem/src/drop.cpp
+
+CMakeFiles/EnchantSystem.dir/src/drop.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/EnchantSystem.dir/src/drop.cpp.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/EnchantSystem.dir/src/drop.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/EnchantSystem.dir/src/drop.cpp.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj: CMakeFiles/EnchantSystem.dir/flags.make
 CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj: CMakeFiles/EnchantSystem.dir/includes_CXX.rsp
 CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj: ../src/equipment.cpp
 CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj: CMakeFiles/EnchantSystem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj"
 	C:/LLVM/bin/clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj -MF CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj.d -o CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj -c D:/GoogleDrive/project/C++/EnchantSystem/src/equipment.cpp
 
 CMakeFiles/EnchantSystem.dir/src/equipment.cpp.i: cmake_force
@@ -88,7 +103,7 @@ CMakeFiles/EnchantSystem.dir/src/main.cpp.obj: CMakeFiles/EnchantSystem.dir/flag
 CMakeFiles/EnchantSystem.dir/src/main.cpp.obj: CMakeFiles/EnchantSystem.dir/includes_CXX.rsp
 CMakeFiles/EnchantSystem.dir/src/main.cpp.obj: ../src/main.cpp
 CMakeFiles/EnchantSystem.dir/src/main.cpp.obj: CMakeFiles/EnchantSystem.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/EnchantSystem.dir/src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/EnchantSystem.dir/src/main.cpp.obj"
 	C:/LLVM/bin/clang++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/EnchantSystem.dir/src/main.cpp.obj -MF CMakeFiles/EnchantSystem.dir/src/main.cpp.obj.d -o CMakeFiles/EnchantSystem.dir/src/main.cpp.obj -c D:/GoogleDrive/project/C++/EnchantSystem/src/main.cpp
 
 CMakeFiles/EnchantSystem.dir/src/main.cpp.i: cmake_force
@@ -101,19 +116,21 @@ CMakeFiles/EnchantSystem.dir/src/main.cpp.s: cmake_force
 
 # Object files for target EnchantSystem
 EnchantSystem_OBJECTS = \
+"CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj" \
 "CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj" \
 "CMakeFiles/EnchantSystem.dir/src/main.cpp.obj"
 
 # External object files for target EnchantSystem
 EnchantSystem_EXTERNAL_OBJECTS =
 
+EnchantSystem.exe: CMakeFiles/EnchantSystem.dir/src/drop.cpp.obj
 EnchantSystem.exe: CMakeFiles/EnchantSystem.dir/src/equipment.cpp.obj
 EnchantSystem.exe: CMakeFiles/EnchantSystem.dir/src/main.cpp.obj
 EnchantSystem.exe: CMakeFiles/EnchantSystem.dir/build.make
 EnchantSystem.exe: lib/sqlite3/SQLITE.lib
 EnchantSystem.exe: CMakeFiles/EnchantSystem.dir/linklibs.rsp
 EnchantSystem.exe: CMakeFiles/EnchantSystem.dir/objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable EnchantSystem.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable EnchantSystem.exe"
 	C:/LLVM/bin/clang++.exe -fuse-ld=lld-link -nostartfiles -nostdlib  -g -std=c++11 -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Xlinker /subsystem:console @CMakeFiles/EnchantSystem.dir/objects1.rsp -o EnchantSystem.exe -Xlinker /implib:EnchantSystem.lib -Xlinker /pdb:D:/GoogleDrive/project/C++/EnchantSystem/build/EnchantSystem.pdb -Xlinker /version:0.0  @CMakeFiles/EnchantSystem.dir/linklibs.rsp
 
 # Rule to build all files generated by this target.

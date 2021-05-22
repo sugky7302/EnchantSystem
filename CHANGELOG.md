@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.1.1.9 - 2021-05-05
+## 0.1.1.10 - 2021-05-22
 
 ### Todo:
 - [x] How to load data from the database.
@@ -13,9 +13,11 @@
 
 ### added:
 - Add a database "attribute.sqlite3".
+- Add a database "drop.sqlite3".
 - [CMakeLists.txt]
   - Add the include path of red black tree, we can use in the cpp now.
-  - Add the includ path of sqlite3.
+  - Add the include path of sqlite3.
+  - Add the include path of json.
 - [equipment.cpp]
   - Complement all class.
   - Attribute adds 6 methods.
@@ -32,11 +34,14 @@
         - setValue can set the attribute value and text is changed synchronously.
         - callback is used to the sqlite3_exec callback.
     - Add Equipment's type.
+- [include/] Add database.h and drop.h.
+- [lib/] Add json thirdparty.
 - [main.cpp] 
   - Test whether all class take some mistakes.
   - Add sqlite3 header.
 
 ### Changed:
+- [CMakeLists.txt] We no longer add the included path of thirdparty everytime.
 - [equipment.h] Adjust definitions and params of all class, some params provide default value to simplify using step.
 
 ## 0.1.0.0 - 2021-04-08 - First Commit

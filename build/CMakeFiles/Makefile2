@@ -113,12 +113,12 @@ lib/sqlite3/clean: lib/sqlite3/CMakeFiles/SQLITE.dir/clean
 CMakeFiles/EnchantSystem.dir/all: lib/sqlite3/CMakeFiles/SQLITE.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/EnchantSystem.dir/build.make CMakeFiles/EnchantSystem.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num=1,2,3 "Built target EnchantSystem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num=1,2,3,4 "Built target EnchantSystem"
 .PHONY : CMakeFiles/EnchantSystem.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/EnchantSystem.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/EnchantSystem.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles 0
 .PHONY : CMakeFiles/EnchantSystem.dir/rule
@@ -139,7 +139,7 @@ CMakeFiles/EnchantSystem.dir/clean:
 lib/sqlite3/CMakeFiles/SQLITE.dir/all:
 	$(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/depend
 	$(MAKE) $(MAKESILENT) -f lib/sqlite3/CMakeFiles/SQLITE.dir/build.make lib/sqlite3/CMakeFiles/SQLITE.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num=4,5,6 "Built target SQLITE"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:/GoogleDrive/project/C++/EnchantSystem/build/CMakeFiles --progress-num=5,6,7 "Built target SQLITE"
 .PHONY : lib/sqlite3/CMakeFiles/SQLITE.dir/all
 
 # Build rule for subdir invocation for target.
