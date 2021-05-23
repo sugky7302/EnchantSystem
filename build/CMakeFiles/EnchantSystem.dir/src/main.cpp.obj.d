@@ -122,9 +122,9 @@ CMakeFiles/EnchantSystem.dir/src/main.cpp.obj: \
   D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\cassert \
   C:\Program\ Files\ (x86)\Windows\ Kits\10\Include\10.0.17763.0\ucrt\assert.h \
   D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\clocale \
+  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\iostream \
   D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\random \
   D:\GoogleDrive\project\C++\EnchantSystem\include\equipment.h \
-  D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\iostream \
   D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\regex \
   D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\locale \
   D:\Tool\Microsoft\ Visual\ Studio\2019\Community\VC\Tools\MSVC\14.20.27508\include\xlocbuf \

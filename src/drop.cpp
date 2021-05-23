@@ -4,64 +4,64 @@ namespace Enchant {
 std::vector<int> ItemDropper::find(int id) {
     std::string sql = "SELECT * FROM monster WHERE id=" + std::to_string(id);
 
-    LoadDatabase(ItemDropper::db_name, sql, ItemDropper::getPackage, (void*)this);
+    // 指標必須要儲存一個DropInfo才能操作成員。直接使用指標會因為沒有成員而報錯。
+    DropInfo* dropper = new DropInfo();
 
-    return this->_items;
+    LoadDatabase(ItemDropper::db_name, sql, ItemDropper::getPackage, (void*)dropper);
+
+    // NOTE: 因為dropper在此函數結束後不會關閉，因此要手動清空。
+    std::vector<int> items = dropper->items;
+    delete dropper;
+
+    return items;
 }
 
 int ItemDropper::getPackage(void* data, int argc, char** argv, char** column_name) {
-    ItemDropper*   self     = (ItemDropper*)data;  // Force to change type
+    DropInfo*      dropper  = (DropInfo*)data;  // Force to change type
     nlohmann::json packages = nlohmann::json::parse(argv[2]);
+    std::string    sql;
 
     for (int i = 0; i < packages.size(); ++i) {
-        self->getItem(packages[i][0].get<int>(), packages[i][1].get<int>());
+        sql = "SELECT * FROM package WHERE id=" + std::to_string(packages[i][0].get<int>());
+        dropper->count = packages[i][1].get<int>();  // 記錄包裹的抽取次數
+        LoadDatabase(ItemDropper::db_name, sql, ItemDropper::getItem, (void*)dropper);
     }
 
     return 0;
 }
 
-void ItemDropper::getItem(int id, int count) {
-    std::string sql = "SELECT * FROM package WHERE id=" + std::to_string(id);
-    this->_count    = count;  // 記錄包裹的抽取次數
+int ItemDropper::getItem(void* data, int argc, char** argv, char** column_name) {
+    // 讀取資料
+    DropInfo*      dropper            = (DropInfo*)data;     // Force to change type
+    bool           is_bind            = std::atoi(argv[2]);  // 有無綁定
+    bool           is_repeat_sampling = std::atoi(argv[3]);  // 是否能重複抽樣
+    nlohmann::json items              = nlohmann::json::parse(argv[4]);
 
-    LoadDatabase(ItemDropper::db_name, sql, ItemDropper::dropItem, (void*)this);
-}
+    // 生成亂數產生器
+    std::random_device                    rd;                // 隨機設備
+    std::default_random_engine            generator(rd());   // 亂數產生器
+    std::uniform_real_distribution<float> unif(0.0, 100.0);  // 亂數的機率分布
 
-int ItemDropper::dropItem(void* data, int argc, char** argv, char** column_name) {
-    ItemDropper*        self               = (ItemDropper*)data;  // Force to change type
-    bool                is_bind            = std::atoi(argv[2]);
-    bool                is_repeat_sampling = std::atoi(argv[3]);
-    nlohmann::json      item               = nlohmann::json::parse(argv[4]);
-    std::map<int, bool> repeat_checker;
+    float             x, y;
+    std::vector<bool> repeat_checker(items.size(), false);
 
-    /* 隨機設備 */
-    std::random_device rd;
-
-    /* 亂數產生器 */
-    std::default_random_engine generator(rd());
-
-    /* 亂數的機率分布 */
-    std::uniform_real_distribution<float> unif(0.0, 100.0);
-
-    /* 產生亂數 */
-    float x, y;
-    for (int i = 0; i < self->_count; ++i) {  // i是指包裹抽取的次數
+    for (int i = 0; i < dropper->count; ++i) {  // i是指包裹抽取的次數
         x = unif(generator), y = 0.;
 
-        for (int j = 0; j < item.size(); ++j) {  // j是指物品總數
-            y += item[j][2].get<double>();
+        for (int j = 0; j < items.size(); ++j) {  // j是指物品總數
+            y += items[j][2].get<double>();
 
             if (x > y) continue;
 
-            if (is_repeat_sampling || (!is_repeat_sampling &&
-                                       (repeat_checker.find(item[j][0]) == repeat_checker.end()))) {
-                for (int k = 0; k < item[j][1]; ++k) self->_items.push_back(item[j][0]);
+            if (is_repeat_sampling || (!is_repeat_sampling && !repeat_checker[j])) {
+                for (int k = 0; k < items[j][1]; ++k) dropper->items.push_back(items[j][0]);
+
                 // Mark the item has been recorded.
-                repeat_checker[item[j][0]] = true;
+                // NOTE: 重複抽樣也記錄不會影響功能，這樣可以減少程式碼
+                repeat_checker[j] = true;
                 break;
             }
-            else if (!is_repeat_sampling &&
-                     (repeat_checker.find(item[j][0]) != repeat_checker.end())) {
+            else if (!is_repeat_sampling && repeat_checker[j]) {
                 --i;
                 break;
             }
