@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.1.1.11 - 2021-05-22
+## 0.1.1.13 - 2021-05-23
 
 ### Todo:
 - [x] How to load data from the database.
@@ -9,6 +9,7 @@
 - [x] Finish AttributeTree.
 - [x] Finish Rune.
 - [x] Finish Equipment.
+- [x] Finish ItemDropper.
 - [ ] Rewrite red-black tree
 
 ### added:
@@ -41,10 +42,10 @@
   - Test whether all class take some mistakes.
   - Add sqlite3 header.
   - Add drop header.
-  - Add database header.
 
 ### Changed:
 - [CMakeLists.txt] We no longer add the included path of thirdparty everytime.
+- [drop.cpp] Optimized the struct and code of ItemDropper.
 - [equipment.h] Adjust definitions and params of all class, some params provide default value to simplify using step.
 
 ## 0.1.0.0 - 2021-04-08 - First Commit

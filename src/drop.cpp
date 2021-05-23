@@ -3,17 +3,12 @@
 namespace Enchant {
 std::vector<int> ItemDropper::find(int id) {
     std::string sql = "SELECT * FROM monster WHERE id=" + std::to_string(id);
+    DropInfo    dropper;
 
-    // 指標必須要儲存一個DropInfo才能操作成員。直接使用指標會因為沒有成員而報錯。
-    DropInfo* dropper = new DropInfo();
+    // NOTE: &dropper才能傳參。
+    LoadDatabase(ItemDropper::db_name, sql, ItemDropper::getPackage, (void*)&dropper);
 
-    LoadDatabase(ItemDropper::db_name, sql, ItemDropper::getPackage, (void*)dropper);
-
-    // NOTE: 因為dropper在此函數結束後不會關閉，因此要手動清空。
-    std::vector<int> items = dropper->items;
-    delete dropper;
-
-    return items;
+    return dropper.items;
 }
 
 int ItemDropper::getPackage(void* data, int argc, char** argv, char** column_name) {
