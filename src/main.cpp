@@ -16,6 +16,8 @@ int main() {
     vector<int> a = Enchant::ItemDropper::find(100);
     for (int i = 0; i < a.size(); ++i) { cout << a[i] << ","; }
 
+    Enchant::Material m_t(1000);
+
     system("pause");
     return 0;
 }

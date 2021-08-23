@@ -1,4 +1,21 @@
+# Goal
+- [ ] Finish the skill cast system.
+- [ ] Design a Rune system that active speical effects according to runes' orders.
+- [ ] Finish the expertise system.
+- [ ] Rewrite red-black tree.
+
 # CHANGELOG
+## 0.2.0.14 - 2021-06-14
+
+### Todo:
+- [ ] Design a system which can combine materials to a product by a recipe and trigger speical effects according to their interactions.
+  - [x] Create Material class.
+  - [x] Create Material database.
+  - [x] Set attribute into the material.
+  - [ ] Design recipes of material group.
+  - [ ] Create Material Combiner.
+  - [ ] Create a product consisted materials by a recipe.
+- [ ] Solve the problem of both enchanting attribute after using rune and inserting initial attributes.
 
 ## 0.1.1.13 - 2021-05-23
 
@@ -10,7 +27,6 @@
 - [x] Finish Rune.
 - [x] Finish Equipment.
 - [x] Finish ItemDropper.
-- [ ] Rewrite red-black tree
 
 ### added:
 - Add a database "attribute.sqlite3".

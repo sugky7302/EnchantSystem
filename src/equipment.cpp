@@ -155,7 +155,7 @@ std::string Rune::getAffix() const { return _affix; }
 
 #pragma region Equipment
 Equipment::Equipment(std::string name, EquipmentType type, int level)
-    : _level(level), _name(name), _type(type), _attr(), _runes(0) {}
+    : level(level), _name(name), _type(type), _attr(), _runes(0) {}
 
 Equipment& Equipment::setUser(int user) {
     _user = user;
@@ -163,7 +163,7 @@ Equipment& Equipment::setUser(int user) {
 }
 
 Equipment& Equipment::mountRune(Rune& rune) {
-    if (_runes.size() < _level / 5 + 1) {
+    if (_runes.size() < level / 5 + 1) {
         _runes.push_back(rune);
         _attr.add(rune.getAttribute());
     }
@@ -173,16 +173,8 @@ Equipment& Equipment::mountRune(Rune& rune) {
     return *this;
 }
 
-Equipment& Equipment::demountRune(int index) {
-    int n = 0;
-    for (std::list<Rune>::iterator iter = _runes.begin(); iter != _runes.end(); ++iter) {
-        if (n == index) {
-            _runes.erase(iter);
-            _attr.add(iter->getAttribute(), false);
-            break;
-        }
-        n++;
-    }
+Equipment& Euqipment::addMaterial(Material& material) {
+    for (int i = 0; i < material.size(); ++i) _attrs.add(material[i]);
     return *this;
 }
 
@@ -197,7 +189,7 @@ std::ostream& operator<<(std::ostream& out, Equipment& item) {
     item.sort();
     item.assignPrefix();
 
-    out << item._prefix << item._name << "(Lv." << item._level << ")\n"
+    out << item._prefix << item._name << "(Lv." << item.level << ")\n"
         << "--------\n";
 
     for (std::list<Rune>::iterator iter = item._runes.begin(); iter != item._runes.end(); ++iter) {
@@ -248,15 +240,70 @@ Equipment& Equipment::assignPrefix() {
 }
 #pragma endregion
 
-#pragma Material
-int Material::callback(void* data, int argc, char** argv, char** column_name) { return 0; }
+#pragma region Material
+int            Material::callback(void* data, int argc, char** argv, char** column_name) {
+    Material* self     = (Material*)data;
+    self->_type        = MaterialType(std::atoi(argv[1]));
+    self->_description = argv[2];
+    self._recipe       = argv[4];
+    self._rune_count   = argv[5];
 
-Material::Material(std::string name) {
-    std::string cmd = "";
-    LoadDatabase(Material::db_name, cmd, callback, (void*)this);
+    // parse material's attribute
+    nlohmann::json attributes = nlohmann::json::parse(argv[3]);
+    for (auto iter = attributes.begin(); iter != attributes.end(); iter++)
+        self->_attrs.push_back(Attribute(iter.key(), iter.value()));
+
+    return 0;
+}
+
+Material::Material(int id) : _id(id) {
+    std::string cmd = "SELECT * FROM material WHERE id = " + std::to_string(id);
+    LoadDatabase(Material::db_name, cmd, Material::callback, (void*)this);
 }
 #pragma endregion
 
-// Equipment Produce(std::vector<Material> material_set) { MaterialSet.FindRecipe }
+#pragma region Sample
+int            Sample::callback(void* data, int argc, char** argv, char** column_name) {
+    Sample* self       = (Sample*)data;
+    self->_type        = EquipmentType(std::atoi(argv[1]));
+    self->_description = argv[2];
+    self->_rune_count  = argv[3];
+    self->_recipe      = nlohmann::json::parse(argv[4]);
+
+    nlohmann::json attributes = nlohmann::json::parse(argv[5]);
+    for (auto iter = attributes.begin(); iter != attributes.end(); iter++)
+        self->_attrs.push_back(Attribute(iter.key(), iter.value()));
+
+    return 0;
+}
+#pragma endregion
+
+Equipment Cast(Sample sample, std::vector<Material>& materials) {
+    nlohmann::json recipe = sample.recipe();
+    if (recipe.size() != materials.size()) return;
+
+    Equipment item(sample.name(), sample.type());
+
+    for (int i = 0; i < materials.size(); ++i) {
+        // check whether the material is satisfied the condition of equipment.
+        if (materials[i].element() != Element(recipe[i][0])) return;
+        if (materials[i].type() != MaterialType(recipe[i][1])) return;
+        if (materials[i].group() != MaterialGroup(recipe[i][2])) return;
+        if (materials[i].level() < recipe[i][3]) return;
+
+        // compute equipment's level
+        item.level += materials[i].level();
+
+        // add material into equipment
+        item.addMaterial(materials[i]);
+    }
+
+    item.level /= materials.size();
+
+    // delete all materials since they are already used.
+    for (int i = 0; i < materials.size(); ++i) delete materials[i];
+
+    return item;
+}
 
 }  // namespace Enchant

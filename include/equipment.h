@@ -2,6 +2,7 @@
 #define EQUIPMENT_H
 
 #include "database.h"
+#include "json/json.hpp"
 #include <functional>
 #include <iostream>
 #include <list>
@@ -92,7 +93,6 @@ class Equipment {
     AttributeTree                                _attr;
     int                                          _user;
     std::list<Rune>                              _runes;
-    int                                          _level  = 0;
     std::string                                  _prefix = "";
     std::string                                  _name   = "";
     std::vector<std::function<void(int&)>>       equip_effect;
@@ -100,10 +100,11 @@ class Equipment {
     std::vector<std::function<void(int&)>>       drop_effect;
 
   public:
+    int level = 0;
     Equipment(std::string, EquipmentType, int);
     Equipment&           setUser(int);
     Equipment&           mountRune(Rune&);
-    Equipment&           demountRune(int);
+    Equipment&           addMaterial(Material&);
     Equipment&           equip();
     Equipment&           drop();
     Equipment&           use();
@@ -113,26 +114,51 @@ class Equipment {
     friend bool          IsHigherOrder(Rune&, Rune&);
 };
 
+enum Element { fire, water, earth, Air };
+enum MaterialType { iron, wood };
+enum MaterialGroup { lumber, copper, gold };
+
 class Material {
-    Attribute                 _effect, _side_effect, _link_effect, _side_link_effect;
+    int                       _id;
+    std::string               _name, _description;
+    Element                   _element;
+    MaterialType              _type;
+    MaterialGroup             _group;
+    std::vector<Attribute>    _attrs;
+    int                       _level;
     static int                callback(void*, int, char**, char**);
-    static inline std::string db_name = "attribute.sqlite3";
+    static inline std::string db_name = "drop.sqlite3";
 
   public:
-    Material(std::string);
-    Attribute getEffect() { return _effect; };
-    Attribute getSideEffect() { return _side_effect; };
-    Attribute getLinkEffect() { return _link_effect; };
-    Attribute getSideLinkEffect() { return _side_link_effect; };
+    Material(int);
+    int                    id() const { return _id; };
+    Element                element() const { return _element; };
+    MaterialGroup          group() const { return _group; };
+    MaterialType           type() const { return _type; };
+    std::vector<Attribute> attrs() const { return _attrs; };
+    int                    level() const { return _level; };
 };
 
-class MaterialSet {
-    std::vector<Material> _set;
+class Sample {
+    static inline std::string db_name = "drop.sqlite3";
+    static int                callback(void*, int, char**, char**);
+
+    EquipmentType          _type;
+    std::string            _name;
+    nlohmann::json         _recipe;
+    std::vector<Attribute> _attrs;
+    std::string            _description;
+    int                    _rune_count;
 
   public:
-    MaterialSet(std::vector<Material>);
-    Attribute getEffect();
-};
+    Sample(std::string name) : _name(name) {
+        std::string cmd = "SELECT * FROM sample WHERE name = " + name;
+        LoadDatabase(Sample::db_name, cmd, Sample::callback, (void*)this);
+    };
+    std::string    name() const { return _name; };
+    EuqipmentType  type() const { return _type; };
+    nlohmann::json recipe() const { return _recipe; };
+}
 }  // namespace Enchant
 
 #endif
